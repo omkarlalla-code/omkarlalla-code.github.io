@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATIS METAR Weather Station - Project Report | Omkar Nitin Lalla</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: #f8fafc;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #06b6d4 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin: 2rem 0 1rem;
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            color: #2c3e50;
+        }
+
+        .report-title {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .report-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            background: white;
+            margin: 2rem 0;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .tech-tag {
+            background: linear-gradient(45deg, #1e3a8a, #3b82f6);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .feature-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .system-architecture {
+            background: #e0f2fe;
+            border: 1px solid #0284c7;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .gesture-demo {
+            background: #f0fdf4;
+            border: 1px solid #22c55e;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .challenges {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .outcomes {
+            background: #d1fae5;
+            border: 1px solid #10b981;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .aviation-focus {
+            background: #ddd6fe;
+            border: 1px solid #8b5cf6;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        ul {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #1e3a8a, #3b82f6);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid #3b82f6;
+            color: #3b82f6;
+        }
+
+        .btn-secondary:hover {
+            background: linear-gradient(45deg, #1e3a8a, #3b82f6);
+            color: white;
+        }
+
+        .component-diagram {
+            background: #fafafa;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 2rem;
+            }
+            
+            .report-title {
+                font-size: 2rem;
+            }
+            
+            .feature-grid,
+            .stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-links {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1 class="report-title">ATIS METAR Weather Station</h1>
+            <p class="report-subtitle">Advanced Aviation Weather Monitoring with Gesture Control</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <a href="../index.html" class="back-link">← Back to Portfolio</a>
+        
+        <div class="content">
+            <div class="section">
+                <h2>Project Overview</h2>
+                <p>
+                    The ATIS METAR Weather Station is a comprehensive aviation weather monitoring system designed for professional 
+                    aviation applications. Built using Raspberry Pi 4, ESP32 microcontroller, and advanced computer vision, this 
+                    system provides real-time weather data, ATIS audio feeds, flight tracking capabilities, and innovative gesture-based 
+                    control interface inspired by Microsoft Flight Simulator.
+                </p>
+                
+                <div class="tech-stack">
+                    <span class="tech-tag">Raspberry Pi 4</span>
+                    <span class="tech-tag">ESP32 Microcontroller</span>
+                    <span class="tech-tag">Python 3.9+</span>
+                    <span class="tech-tag">MediaPipe Computer Vision</span>
+                    <span class="tech-tag">WebRTC Audio Streaming</span>
+                    <span class="tech-tag">React.js Frontend</span>
+                    <span class="tech-tag">WebSocket Real-time</span>
+                    <span class="tech-tag">Aviation APIs</span>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>System Architecture</h2>
+                <div class="component-diagram">
+                    <h3>Hardware & Software Architecture</h3>
+                    <br>
+                    <pre>
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│   ESP32 Antenna │────│  Raspberry Pi 4  │────│  19" Monitor    │
+│   (Balcony)     │    │  Main Terminal   │    │  Display Unit   │
+└─────────────────┘    └──────────────────┘    └─────────────────┘
+        │                        │                        │
+        │                        │                        │
+   ┌────▼────┐              ┌────▼────┐              ┌────▼────┐
+   │ Weather │              │ Gesture │              │   UI    │
+   │ Data RX │              │ Control │              │ Engine  │
+   └─────────┘              └─────────┘              └─────────┘
+                                     │
+                           ┌─────────▼─────────┐
+                           │    WebCam Input   │
+                           │ MediaPipe Vision  │
+                           └───────────────────┘
+                    </pre>
+                </div>
+
+                <div class="system-architecture">
+                    <h3>Technical Stack Integration</h3>
+                    <br>
+                    <strong>Hardware Layer:</strong><br>
+                    • ESP32 → Weather data collection & antenna control<br>
+                    • Raspberry Pi 4 → Main processing unit & gesture recognition<br>
+                    • USB Webcam → Computer vision input for gesture control<br>
+                    • 19" Monitor → Professional aviation display interface<br>
+                    <br>
+                    <strong>Software Layer:</strong><br>
+                    • Python Backend → MediaPipe processing & API integration<br>
+                    • React Frontend → Aviation-themed UI with real-time updates<br>
+                    • WebSocket Server → Real-time communication between components<br>
+                    • RESTful APIs → Integration with aviation data sources
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Core Features</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>Real-time METAR Data</h3>
+                        <p>Live weather monitoring from multiple airports with automatic updates every 5 minutes. Displays temperature, 
+                        barometric pressure, wind speed/direction, visibility, and cloud conditions in aviation-standard format.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>ATIS Audio Feeds</h3>
+                        <p>Streaming audio from airport Automatic Terminal Information Service broadcasts. Supports multiple airports 
+                        simultaneously with clear audio quality and background noise reduction.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Gesture Control System</h3>
+                        <p>Advanced computer vision using MediaPipe for hands-free operation. Recognizes aviation-specific gestures 
+                        for intuitive control without physical interaction with the interface.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Flight Tracking Integration</h3>
+                        <p>Real-time aircraft tracking using FlightRadar24 and FlightAware APIs. Displays live flight paths, 
+                        aircraft information, and arrival/departure data with interactive mapping.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Radio Garden Integration</h3>
+                        <p>Access to global radio stations and aviation communications. Provides background audio and emergency 
+                        frequency monitoring with clear reception quality.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Professional Aviation UI</h3>
+                        <p>Microsoft Flight Simulator-inspired interface with dark theme, aviation typography, and instrument-style 
+                        displays. Optimized for 19" monitor with high contrast visibility.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Gesture Control Innovation</h2>
+                <div class="gesture-demo">
+                    <h3>Aviation-Specific Gesture Commands:</h3>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <h3>Airport Navigation</h3>
+                            <ul>
+                                <li><strong>Swipe Left/Right:</strong> Switch between airports</li>
+                                <li><strong>Point Up:</strong> Play/pause ATIS audio</li>
+                                <li><strong>Point Down:</strong> Stop all audio feeds</li>
+                                <li><strong>Circular Motion:</strong> Refresh weather data</li>
+                            </ul>
+                        </div>
+                        <div class="feature-card">
+                            <h3>Flight Operations</h3>
+                            <ul>
+                                <li><strong>Make Fist:</strong> Select aircraft on radar</li>
+                                <li><strong>Open Palm:</strong> Return to main menu</li>
+                                <li><strong>Thumbs Up:</strong> Zoom in on flight path</li>
+                                <li><strong>Thumbs Down:</strong> Zoom out from display</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Computer Vision Implementation</h3>
+                <p>
+                    The gesture recognition system processes 30 frames per second using Google's MediaPipe framework. 
+                    Hand landmark detection achieves sub-200ms response times with 95% accuracy in controlled lighting conditions. 
+                    The system adapts to different users and lighting conditions through continuous calibration.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>Performance Metrics</h2>
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-number">30</div>
+                        <div>FPS Gesture Processing</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">200ms</div>
+                        <div>Gesture Response Time</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">95%</div>
+                        <div>Recognition Accuracy</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">15+</div>
+                        <div>Airport Data Sources</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">24/7</div>
+                        <div>Continuous Operation</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">5min</div>
+                        <div>Weather Update Interval</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Integration Capabilities</h2>
+                <div class="aviation-focus">
+                    <h3>Professional Aviation Data Sources:</h3>
+                    <ul>
+                        <li><strong>METAR/TAF Data:</strong> Global airport weather observations and forecasts</li>
+                        <li><strong>NOTAM Integration:</strong> Notice to Airmen for operational updates</li>
+                        <li><strong>FlightRadar24 API:</strong> Real-time aircraft tracking and flight information</li>
+                        <li><strong>FlightAware Integration:</strong> Flight plans, delays, and airport statistics</li>
+                        <li><strong>Radio Garden API:</strong> Global radio station access and aviation communications</li>
+                        <li><strong>ATIS Audio Streams:</strong> Direct airport information service broadcasts</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Technical Implementation</h2>
+                <h3>Hardware Configuration</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>ESP32 Antenna System</h3>
+                        <ul>
+                            <li>Mounted on balcony beam for optimal reception</li>
+                            <li>Weather-resistant housing with proper grounding</li>
+                            <li>WiFi connectivity to main terminal</li>
+                            <li>Real-time data transmission to Raspberry Pi</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Raspberry Pi Terminal</h3>
+                        <ul>
+                            <li>Raspberry Pi 4 (4GB RAM) main processing unit</li>
+                            <li>19" monitor for professional aviation display</li>
+                            <li>USB webcam for gesture recognition input</li>
+                            <li>Audio output for ATIS and radio feeds</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Software Architecture</h3>
+                <p>
+                    The system uses a modular Python backend with React.js frontend, connected via WebSocket for real-time 
+                    communication. MediaPipe handles computer vision processing while separate microservices manage weather 
+                    data collection, audio streaming, and flight tracking integration.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>Development Challenges</h2>
+                <div class="challenges">
+                    <h3>Technical Challenges Overcome:</h3>
+                    <ul>
+                        <li><strong>Real-time Gesture Processing:</strong> Optimizing MediaPipe for 30fps on Raspberry Pi hardware constraints</li>
+                        <li><strong>Audio Stream Management:</strong> Handling multiple simultaneous ATIS feeds without latency or dropouts</li>
+                        <li><strong>API Rate Limiting:</strong> Efficient caching and request management for aviation data APIs</li>
+                        <li><strong>Weather Antenna Reception:</strong> Optimizing ESP32 positioning and signal processing for reliable data</li>
+                        <li><strong>UI Responsiveness:</strong> Maintaining smooth user interface while processing intensive computer vision</li>
+                        <li><strong>Cross-platform Integration:</strong> Seamless communication between ESP32, Raspberry Pi, and web interface</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Professional Aviation Applications</h2>
+                <div class="outcomes">
+                    <h3>Real-world Use Cases:</h3>
+                    <ul>
+                        <li><strong>Flight Planning:</strong> Real-time weather assessment for route planning and safety decisions</li>
+                        <li><strong>Airport Operations:</strong> Continuous monitoring of conditions affecting aircraft operations</li>
+                        <li><strong>Pilot Training:</strong> Educational tool for understanding weather impacts on aviation</li>
+                        <li><strong>Aviation Enthusiasts:</strong> Professional-grade monitoring for hobby and educational purposes</li>
+                        <li><strong>Emergency Preparedness:</strong> Rapid access to critical aviation weather and communication data</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Skills & Technologies Demonstrated</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>Hardware Engineering</h3>
+                        <p>ESP32 programming, antenna design, weatherproofing, and multi-device integration with proper power management and signal optimization.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Computer Vision</h3>
+                        <p>Advanced MediaPipe implementation, real-time gesture recognition, machine learning model optimization, and performance tuning.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Full-Stack Development</h3>
+                        <p>Python backend development, React.js frontend, WebSocket real-time communication, and RESTful API integration.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Aviation Knowledge</h3>
+                        <p>METAR/TAF interpretation, ATIS procedures, flight operations understanding, and professional aviation data standards.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>System Integration</h3>
+                        <p>Multi-platform architecture, real-time data processing, audio streaming, and professional UI/UX design.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Performance Optimization</h3>
+                        <p>Resource management on embedded systems, latency optimization, and efficient algorithm implementation.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Future Enhancements</h2>
+                <p>Planned improvements and expanded capabilities:</p>
+                <ul>
+                    <li><strong>AI Weather Prediction:</strong> Machine learning models for localized weather forecasting</li>
+                    <li><strong>Voice Control Integration:</strong> Complement gesture control with voice commands for complete hands-free operation</li>
+                    <li><strong>Mobile Companion App:</strong> Remote monitoring and control capabilities via smartphone</li>
+                    <li><strong>Advanced Analytics:</strong> Historical weather pattern analysis and trend reporting</li>
+                    <li><strong>Multi-location Support:</strong> Simultaneous monitoring of multiple weather stations</li>
+                    <li><strong>Emergency Alert System:</strong> Automated notifications for severe weather conditions</li>
+                    <li><strong>Cloud Integration:</strong> Data backup and remote access capabilities</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>Project Impact</h2>
+                <div class="outcomes">
+                    <h3>Innovation & Learning Outcomes:</h3>
+                    <ul>
+                        <li><strong>Cost-Effective Solution:</strong> Professional aviation weather monitoring at fraction of commercial system cost</li>
+                        <li><strong>Cutting-Edge Interface:</strong> First-of-its-kind gesture control for aviation weather applications</li>
+                        <li><strong>Educational Value:</strong> Deep understanding of weather systems, aviation operations, and computer vision</li>
+                        <li><strong>Technical Innovation:</strong> Successful integration of multiple complex technologies into cohesive system</li>
+                        <li><strong>Professional Capability:</strong> System meets standards for actual aviation weather monitoring applications</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviation Route Planning - Project Report | Omkar Nitin Lalla</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: #f8fafc;
+        }
+
+        .header {
+            background: #2c3e50;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin: 2rem 0 1rem;
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            color: #2c3e50;
+        }
+
+        .report-title {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .report-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            background: white;
+            margin: 2rem 0;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .tech-tag {
+            background: #2c3e50;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .feature-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: #2c3e50;
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .aviation-data {
+            background: #e0f2fe;
+            border: 1px solid #0284c7;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .route-details {
+            background: #f0f9ff;
+            border: 1px solid #0ea5e9;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .challenges {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .outcomes {
+            background: #d1fae5;
+            border: 1px solid #10b981;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        ul {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background: #2c3e50;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background: #3b82f6;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid #2c3e50;
+            color: #2c3e50;
+        }
+
+        .btn-secondary:hover {
+            background: #2c3e50;
+            color: white;
+        }
+
+        .cost-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        .cost-table th,
+        .cost-table td {
+            border: 1px solid #e2e8f0;
+            padding: 1rem;
+            text-align: left;
+        }
+
+        .cost-table th {
+            background: #f8fafc;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 2rem;
+            }
+            
+            .report-title {
+                font-size: 2rem;
+            }
+            
+            .feature-grid,
+            .stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-links {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1 class="report-title">Aviation Route Planning</h1>
+            <p class="report-subtitle">Comprehensive Air Shuttle Feasibility Analysis</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <a href="../index.html" class="back-link">← Back to Portfolio</a>
+        
+        <div class="content">
+            <div class="section">
+                <h2>Project Overview</h2>
+                <p>
+                    This comprehensive aviation project analyzes the feasibility of establishing a passenger air shuttle 
+                    service between Pune Lohegaon Airport (VAPO) and Mumbai Juhu Aerodrome (VAJJ). The study encompasses 
+                    detailed route planning, economic analysis, regulatory compliance, operational procedures, and risk assessment 
+                    for commercial aviation operations in Indian airspace.
+                </p>
+                
+                <div class="tech-stack">
+                    <span class="tech-tag">Flight Planning</span>
+                    <span class="tech-tag">Aviation Regulations</span>
+                    <span class="tech-tag">Economic Analysis</span>
+                    <span class="tech-tag">Risk Assessment</span>
+                    <span class="tech-tag">Weather Analysis</span>
+                    <span class="tech-tag">Airspace Navigation</span>
+                    <span class="tech-tag">Cost Modeling</span>
+                </div>
+
+                <div class="project-links">
+                    <a href="../Aviation_Charts/Flight_Planning_Summary.txt" class="btn">View Flight Plan</a>
+                    <a href="../Data_Analysis/" class="btn btn-secondary">Economic Models</a>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Route Specifications</h2>
+                <div class="route-details">
+                    <div class="aviation-data">
+                        <h3>PUNE-MUMBAI AIR SHUTTLE ROUTE</h3>
+                        <br>
+                        <strong>Origin:</strong> VAPO (Pune Lohegaon Airport)<br>
+                        <strong>Destination:</strong> VAJJ (Mumbai Juhu Aerodrome)<br>
+                        <strong>Distance:</strong> 95 nautical miles<br>
+                        <strong>Flight Time:</strong> 45 minutes<br>
+                        <strong>Recommended Aircraft:</strong> Twin Otter DHC-6-400 (19 seats)<br>
+                        <strong>Cruise Altitude:</strong> 8,000-10,000 ft<br>
+                        <strong>Navigation:</strong> Via PUN VOR (112.9 MHz) → Direct VAJJ
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Technical Analysis</h2>
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-number">95</div>
+                        <div>Nautical Miles</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">45</div>
+                        <div>Minutes Flight Time</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">75%</div>
+                        <div>Time Savings vs Road</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">₹68,300</div>
+                        <div>Direct Operating Cost</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Aircraft Selection & Specifications</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>Twin Otter DHC-6-400</h3>
+                        <ul>
+                            <li><strong>Capacity:</strong> 18 passenger seats (economy plus configuration)</li>
+                            <li><strong>Cruise Speed:</strong> 180 knots</li>
+                            <li><strong>Range:</strong> 800+ nautical miles</li>
+                            <li><strong>Service Ceiling:</strong> 25,000 ft</li>
+                            <li><strong>Fuel Consumption:</strong> 400 liters/hour</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Operational Advantages</h3>
+                        <ul>
+                            <li>Excellent short-field performance</li>
+                            <li>All-weather ILS capability at VAPO</li>
+                            <li>Proven reliability in commercial operations</li>
+                            <li>Low maintenance requirements</li>
+                            <li>Optimal size for business shuttle service</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Economic Analysis</h2>
+                <h3>Operating Costs per Round Trip</h3>
+                <table class="cost-table">
+                    <thead>
+                        <tr>
+                            <th>Cost Component</th>
+                            <th>Amount (INR)</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>VAPO Airport Fees</td>
+                            <td>₹12,000</td>
+                            <td>₹8,500 landing + ₹3,500 parking</td>
+                        </tr>
+                        <tr>
+                            <td>VAJJ Airport Fees</td>
+                            <td>₹5,300</td>
+                            <td>₹4,500 landing + ₹800 parking</td>
+                        </tr>
+                        <tr>
+                            <td>Fuel Costs</td>
+                            <td>₹51,000</td>
+                            <td>600 liters × ₹85 (1.5 flight hours)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total Direct Operating Cost</strong></td>
+                            <td><strong>₹68,300</strong></td>
+                            <td><strong>Per round trip</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Market Positioning</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>Competitive Advantage</h3>
+                        <ul>
+                            <li><strong>Road Transport:</strong> 4-6 hours (traffic dependent)</li>
+                            <li><strong>Rail Transport:</strong> 3-4 hours (suburban connections)</li>
+                            <li><strong>Commercial Airlines:</strong> 3 hours total (including procedures)</li>
+                            <li><strong>Air Shuttle:</strong> 1.5 hours total (weather independent)</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Target Market</h3>
+                        <ul>
+                            <li>Business executives and corporate travelers</li>
+                            <li>High-net-worth individuals</li>
+                            <li>Time-sensitive professionals</li>
+                            <li>Emergency and urgent travel needs</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Regulatory Compliance</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>DGCA Requirements</h3>
+                        <ul>
+                            <li>NSOP (Non-Scheduled Operator's Permit) mandatory</li>
+                            <li>Prior Permission Required (PPR) at both airports</li>
+                            <li>Flight plan filing for all operations</li>
+                            <li>Security clearance for crew and aircraft</li>
+                            <li>Insurance coverage as per regulations</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Operational Procedures</h3>
+                        <ul>
+                            <li>30-minute pre-flight planning</li>
+                            <li>Passenger boarding and security (15 minutes)</li>
+                            <li>Engine start and taxi procedures (10 minutes)</li>
+                            <li>45-minute flight time</li>
+                            <li>Landing, taxi, and passenger disembarkation (25 minutes)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Weather & Seasonal Analysis</h2>
+                <div class="route-details">
+                    <h3>Weather Considerations</h3>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <h3>Peak Season (Oct-Mar)</h3>
+                            <ul>
+                                <li>Excellent weather conditions</li>
+                                <li>Minimal weather delays expected</li>
+                                <li>Higher demand anticipated</li>
+                                <li>Premium pricing opportunities</li>
+                                <li>Optimal operational reliability</li>
+                            </ul>
+                        </div>
+                        <div class="feature-card">
+                            <h3>Monsoon Season (Jun-Sep)</h3>
+                            <ul>
+                                <li>Weather delays possible</li>
+                                <li>Reduced demand likely</li>
+                                <li>Competitive pricing required</li>
+                                <li>Alternative routing may be needed</li>
+                                <li>Enhanced weather monitoring essential</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Safety & Risk Assessment</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>Emergency Procedures</h3>
+                        <ul>
+                            <li><strong>Primary Alternate:</strong> VABB (Mumbai International) - 35 nm from VAJJ</li>
+                            <li><strong>Return Alternate:</strong> VAPO (origin airport) - 95 nm</li>
+                            <li><strong>Extended Range:</strong> VAGO (Goa) - 180 nm</li>
+                            <li><strong>Emergency Frequencies:</strong> Mumbai Radar 121.5 MHz</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Crew Requirements</h3>
+                        <ul>
+                            <li>Captain with ATPL and Twin Otter type rating</li>
+                            <li>First Officer with CPL and type rating</li>
+                            <li>Current IFR and aircraft-specific training</li>
+                            <li>Class 1 medical certificates</li>
+                            <li>Regular recurrent training programs</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Technical Challenges</h2>
+                <div class="challenges">
+                    <h3>Operational Challenges Identified:</h3>
+                    <ul>
+                        <li><strong>Slot Coordination:</strong> Managing departure/arrival times at commercial airports</li>
+                        <li><strong>Weather Dependencies:</strong> Monsoon season impact on schedule reliability</li>
+                        <li><strong>Military Coordination:</strong> Required coordination at VAPO due to military operations</li>
+                        <li><strong>Daylight Restrictions:</strong> VAJJ operational limitations to daylight hours only</li>
+                        <li><strong>High Airport Fees:</strong> Significant impact on operating margins and pricing</li>
+                        <li><strong>Regulatory Compliance:</strong> Complex DGCA requirements and documentation burden</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Infrastructure Requirements</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>VAPO (Pune) Requirements</h3>
+                        <ul>
+                            <li>Commercial terminal access arrangements</li>
+                            <li>Ground handling service contracts</li>
+                            <li>Fuel availability and supply agreements</li>
+                            <li>Customs and immigration facilities</li>
+                            <li>Maintenance hangar space</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h3>VAJJ (Mumbai) Requirements</h3>
+                        <ul>
+                            <li>General aviation terminal access</li>
+                            <li>FBO (Fixed Base Operator) services</li>
+                            <li>Ground transportation connections</li>
+                            <li>Fuel services and handling</li>
+                            <li>Limited operational hours accommodation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Skills & Knowledge Demonstrated</h2>
+                <div class="outcomes">
+                    <h3>Aviation Expertise Developed:</h3>
+                    <ul>
+                        <li><strong>Flight Planning:</strong> Route design, navigation procedures, and airspace analysis</li>
+                        <li><strong>Aviation Regulations:</strong> DGCA compliance, operational requirements, and safety protocols</li>
+                        <li><strong>Economic Modeling:</strong> Cost analysis, revenue projections, and business case development</li>
+                        <li><strong>Risk Assessment:</strong> Weather analysis, emergency procedures, and operational safety</li>
+                        <li><strong>Aircraft Systems:</strong> Performance characteristics, operational limitations, and capabilities</li>
+                        <li><strong>Airport Operations:</strong> Ground procedures, fees structure, and facility requirements</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Project Outcomes & Conclusions</h2>
+                <div class="outcomes">
+                    <h3>Key Findings:</h3>
+                    <ul>
+                        <li><strong>Technical Feasibility:</strong> Route is technically viable with proper planning and regulatory compliance</li>
+                        <li><strong>Market Opportunity:</strong> Significant time savings (75%) for business travelers creates strong value proposition</li>
+                        <li><strong>Operational Complexity:</strong> Success depends on consistent demand, weather management, and regulatory navigation</li>
+                        <li><strong>Economic Viability:</strong> Requires premium pricing strategy to offset high airport fees and operational costs</li>
+                        <li><strong>Seasonal Variations:</strong> Business model must account for monsoon season impacts and demand fluctuations</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Future Development</h2>
+                <p>Recommendations for expanding this aviation analysis:</p>
+                <ul>
+                    <li><strong>Market Research:</strong> Detailed passenger demand surveys and competitive analysis</li>
+                    <li><strong>Financial Modeling:</strong> Complete business plan with investment requirements and ROI projections</li>
+                    <li><strong>Regulatory Engagement:</strong> Formal discussions with DGCA for operational approval pathway</li>
+                    <li><strong>Partnership Development:</strong> Engagement with airport authorities and ground handling companies</li>
+                    <li><strong>Technology Integration:</strong> Flight tracking, booking systems, and operational management software</li>
+                    <li><strong>Route Expansion:</strong> Additional city pairs and network development opportunities</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

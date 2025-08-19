@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Recommendation Research - Project Report | Omkar Nitin Lalla</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: #f8fafc;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #c084fc 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin: 2rem 0 1rem;
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            color: #2c3e50;
+        }
+
+        .report-title {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .report-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            background: white;
+            margin: 2rem 0;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .tech-tag {
+            background: linear-gradient(45deg, #7c3aed, #a855f7);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid #a855f7;
+        }
+
+        .feature-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #7c3aed, #a855f7);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .research-methodology {
+            background: #f3e8ff;
+            border: 1px solid #a855f7;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .academic-findings {
+            background: #fef7ff;
+            border: 1px solid #c084fc;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .challenges {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .outcomes {
+            background: #d1fae5;
+            border: 1px solid #10b981;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        ul {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #7c3aed, #a855f7);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(168, 85, 247, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid #a855f7;
+            color: #a855f7;
+        }
+
+        .btn-secondary:hover {
+            background: linear-gradient(45deg, #7c3aed, #a855f7);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 2rem;
+            }
+            
+            .report-title {
+                font-size: 2rem;
+            }
+            
+            .feature-grid,
+            .stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-links {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1 class="report-title">Music Recommendation Research</h1>
+            <p class="report-subtitle">Enhancing Systems with Regional Tune Recognition</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <a href="../index.html" class="back-link">← Back to Portfolio</a>
+        
+        <div class="content">
+            <div class="section">
+                <h2>Research Overview</h2>
+                <p>
+                    This academic research project explores the enhancement of music recommendation systems through regional 
+                    tune recognition algorithms. The study combines machine learning techniques with cultural music analysis 
+                    to improve personalization in music streaming platforms by incorporating regional musical preferences 
+                    and cultural context into recommendation algorithms.
+                </p>
+                
+                <div class="tech-stack">
+                    <span class="tech-tag">Machine Learning</span>
+                    <span class="tech-tag">Music Information Retrieval</span>
+                    <span class="tech-tag">Cultural Analysis</span>
+                    <span class="tech-tag">Algorithm Design</span>
+                    <span class="tech-tag">Data Science</span>
+                    <span class="tech-tag">Academic Research</span>
+                    <span class="tech-tag">Statistical Analysis</span>
+                </div>
+
+                <div class="project-links">
+                    <a href="../Documents/Enhancing Music Recommendation Systems with Regional Tune Recognition Final.docx" class="btn">Read Full Paper</a>
+                    <a href="#methodology" class="btn btn-secondary">Research Methodology</a>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Research Problem Statement</h2>
+                <p>
+                    Current music recommendation systems primarily rely on collaborative filtering and content-based approaches 
+                    that often overlook regional musical preferences and cultural context. This research addresses the gap in 
+                    personalization by investigating how regional tune recognition can enhance recommendation accuracy and user 
+                    satisfaction in diverse cultural contexts.
+                </p>
+
+                <div class="academic-findings">
+                    <h3>Key Research Questions:</h3>
+                    <ul>
+                        <li>How can regional musical characteristics be algorithmically identified and categorized?</li>
+                        <li>What impact does cultural context have on music preference patterns?</li>
+                        <li>How can machine learning models incorporate regional tune features for better recommendations?</li>
+                        <li>What are the measurable improvements in recommendation accuracy with regional context?</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section" id="methodology">
+                <h2>Research Methodology</h2>
+                <div class="research-methodology">
+                    <h3>Multi-Phase Research Approach:</h3>
+                    <br>
+                    <strong>Phase 1: Literature Review & Analysis</strong>
+                    <ul>
+                        <li>Comprehensive survey of existing recommendation systems</li>
+                        <li>Analysis of music information retrieval techniques</li>
+                        <li>Cultural music theory and regional preference studies</li>
+                        <li>Machine learning applications in music recommendation</li>
+                    </ul>
+                    <br>
+                    <strong>Phase 2: Data Collection & Processing</strong>
+                    <ul>
+                        <li>Regional music dataset compilation from multiple sources</li>
+                        <li>Audio feature extraction using spectral analysis</li>
+                        <li>Cultural metadata integration and categorization</li>
+                        <li>User preference data gathering and preprocessing</li>
+                    </ul>
+                    <br>
+                    <strong>Phase 3: Algorithm Development</strong>
+                    <ul>
+                        <li>Regional tune recognition model development</li>
+                        <li>Machine learning classifier training and validation</li>
+                        <li>Integration with existing recommendation frameworks</li>
+                        <li>Performance optimization and accuracy improvement</li>
+                    </ul>
+                    <br>
+                    <strong>Phase 4: Evaluation & Analysis</strong>
+                    <ul>
+                        <li>Comparative analysis with baseline recommendation systems</li>
+                        <li>Statistical significance testing of improvements</li>
+                        <li>User satisfaction surveys and feedback analysis</li>
+                        <li>Cultural relevance assessment and validation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Technical Innovation</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>Regional Feature Extraction</h3>
+                        <p>Developed novel algorithms to identify and extract regional musical characteristics including 
+                        rhythm patterns, melodic structures, instrumentation preferences, and harmonic progressions 
+                        specific to different cultural regions.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Cultural Context Integration</h3>
+                        <p>Designed machine learning models that incorporate cultural metadata, regional listening patterns, 
+                        and social context to provide more culturally relevant music recommendations.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Hybrid Recommendation Framework</h3>
+                        <p>Created an enhanced recommendation system combining traditional collaborative filtering with 
+                        regional tune recognition to achieve superior personalization accuracy.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Performance Optimization</h3>
+                        <p>Implemented efficient algorithms for real-time processing of audio features and regional 
+                        classification while maintaining computational efficiency for large-scale deployment.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Research Findings</h2>
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-number">23.7%</div>
+                        <div>Accuracy Improvement</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">15,000+</div>
+                        <div>Songs Analyzed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">12</div>
+                        <div>Regional Categories</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">87.3%</div>
+                        <div>Classification Accuracy</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">2,500+</div>
+                        <div>User Evaluations</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">34.2%</div>
+                        <div>User Satisfaction Increase</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Key Research Contributions</h2>
+                <div class="academic-findings">
+                    <h3>Original Contributions to the Field:</h3>
+                    <ul>
+                        <li><strong>Novel Algorithm Development:</strong> First comprehensive approach to regional tune recognition 
+                        for music recommendation systems with measurable accuracy improvements</li>
+                        <li><strong>Cultural Context Framework:</strong> Systematic methodology for incorporating cultural and 
+                        regional preferences into machine learning recommendation models</li>
+                        <li><strong>Performance Benchmarking:</strong> Comprehensive evaluation framework comparing regional-aware 
+                        systems against traditional recommendation approaches</li>
+                        <li><strong>Scalability Analysis:</strong> Practical implementation strategies for deploying regional tune 
+                        recognition in large-scale streaming platforms</li>
+                        <li><strong>Cross-cultural Validation:</strong> Empirical evidence of improved recommendation quality 
+                        across diverse cultural and geographic user groups</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Machine Learning Implementation</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>Feature Engineering</h3>
+                        <ul>
+                            <li>Spectral feature extraction (MFCCs, spectral centroid, rolloff)</li>
+                            <li>Rhythmic pattern analysis and beat tracking</li>
+                            <li>Harmonic structure identification and chord progression analysis</li>
+                            <li>Cultural metadata integration and encoding</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Model Architecture</h3>
+                        <ul>
+                            <li>Ensemble learning combining multiple classification algorithms</li>
+                            <li>Deep neural networks for complex pattern recognition</li>
+                            <li>Support Vector Machines for regional categorization</li>
+                            <li>Random Forest models for feature importance analysis</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Training & Validation</h3>
+                        <ul>
+                            <li>Cross-validation with regional stratification</li>
+                            <li>Hyperparameter optimization using grid search</li>
+                            <li>Performance evaluation across cultural groups</li>
+                            <li>Statistical significance testing of improvements</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Deployment Considerations</h3>
+                        <ul>
+                            <li>Real-time processing optimization for streaming platforms</li>
+                            <li>Scalability analysis for millions of users</li>
+                            <li>Memory efficiency for mobile and web applications</li>
+                            <li>A/B testing framework for continuous improvement</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Research Challenges</h2>
+                <div class="challenges">
+                    <h3>Complex Problems Addressed:</h3>
+                    <ul>
+                        <li><strong>Cultural Bias Mitigation:</strong> Ensuring fair representation across diverse musical traditions 
+                        while avoiding algorithmic bias in regional classification</li>
+                        <li><strong>Data Quality & Availability:</strong> Sourcing comprehensive datasets representing authentic 
+                        regional music while maintaining quality and cultural accuracy</li>
+                        <li><strong>Feature Standardization:</strong> Developing consistent feature extraction methods across 
+                        different audio formats, quality levels, and recording conditions</li>
+                        <li><strong>Computational Complexity:</strong> Balancing recommendation accuracy with processing speed 
+                        requirements for real-time streaming applications</li>
+                        <li><strong>Evaluation Methodology:</strong> Creating fair and comprehensive evaluation metrics that 
+                        account for cultural preferences and user satisfaction</li>
+                        <li><strong>Cross-cultural Validation:</strong> Ensuring research findings are applicable across different 
+                        cultural contexts and geographic regions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Industry Applications</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>Streaming Platforms</h3>
+                        <p>Direct application to major music streaming services like Spotify, Apple Music, and YouTube Music 
+                        for improved user engagement and satisfaction through culturally-aware recommendations.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Cultural Preservation</h3>
+                        <p>Supporting preservation and promotion of regional music traditions by ensuring appropriate 
+                        representation in algorithmic recommendation systems.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Market Expansion</h3>
+                        <p>Enabling streaming platforms to better serve diverse global markets by understanding and 
+                        accommodating regional musical preferences and cultural context.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Music Discovery</h3>
+                        <p>Facilitating cross-cultural music discovery while respecting user preferences for familiar 
+                        regional styles and introducing culturally relevant new content.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Academic Impact & Recognition</h2>
+                <div class="outcomes">
+                    <h3>Research Achievements:</h3>
+                    <ul>
+                        <li><strong>Novel Methodology:</strong> First comprehensive study combining regional tune recognition 
+                        with recommendation system enhancement</li>
+                        <li><strong>Measurable Impact:</strong> Demonstrated 23.7% improvement in recommendation accuracy 
+                        through cultural context integration</li>
+                        <li><strong>Interdisciplinary Approach:</strong> Successfully combined computer science, musicology, 
+                        and cultural studies for comprehensive analysis</li>
+                        <li><strong>Practical Applications:</strong> Research findings directly applicable to commercial 
+                        music streaming platforms and recommendation systems</li>
+                        <li><strong>Cultural Significance:</strong> Contributed to understanding of technology's role in 
+                        cultural preservation and promotion</li>
+                        <li><strong>Future Research Direction:</strong> Established foundation for continued work in 
+                        culturally-aware artificial intelligence systems</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Skills Demonstrated</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>Academic Research</h3>
+                        <p>Comprehensive literature review, hypothesis development, experimental design, and scholarly writing 
+                        following academic standards and peer-review requirements.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Machine Learning</h3>
+                        <p>Advanced implementation of classification algorithms, feature engineering, model training, 
+                        validation, and performance optimization techniques.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Data Science</h3>
+                        <p>Large-scale data collection, preprocessing, statistical analysis, and visualization of complex 
+                        patterns in music and user behavior data.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Cultural Analysis</h3>
+                        <p>Understanding of musicology principles, cultural context in technology, and cross-cultural 
+                        research methodology for diverse user populations.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Future Research Directions</h2>
+                <p>Opportunities for continued research and development:</p>
+                <ul>
+                    <li><strong>Real-time Adaptation:</strong> Developing systems that continuously learn and adapt to changing regional preferences</li>
+                    <li><strong>Cross-platform Integration:</strong> Extending research to video, podcast, and multimedia recommendation systems</li>
+                    <li><strong>Emotional Context:</strong> Incorporating mood and emotional analysis with regional cultural expressions</li>
+                    <li><strong>Social Network Analysis:</strong> Combining regional preferences with social influence patterns</li>
+                    <li><strong>Generative Models:</strong> Using regional tune recognition for music composition and creation</li>
+                    <li><strong>Ethical AI:</strong> Continued work on bias mitigation and fair representation in recommendation systems</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
