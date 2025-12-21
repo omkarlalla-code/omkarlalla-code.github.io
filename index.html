@@ -146,6 +146,31 @@
                     </div>
 
                     <div class="project-card">
+                        <h3>Greek Civilization Interactive Kiosk</h3>
+                        <p>
+                            Production-ready museum kiosk featuring real-time conversational AI powered by Groq's Llama 3.3 70B model, with synchronized image display of 86 Greek artifacts across 24 categories. Built with microservices architecture for scalability and reliability.
+                        </p>
+                        <p style="margin-top: 1rem; font-size: 0.95rem;">
+                            <strong>Architecture:</strong> 5-microservice system (Orchestrator, TTS, LLM, ImageScreener, LiveKit) spanning ~44,000 lines of code. Features WebRTC-based real-time communication, Deepgram text-to-speech (aura-2-cordelia-en voice), browser-based speech recognition, and time-synchronized image transitions. Includes operator control panel for session management, WebSocket payment confirmation system, automatic session timers with graceful goodbye messages, and HTML5 audio playback for maximum browser compatibility.
+                        </p>
+                        <p style="margin-top: 1rem; font-size: 0.95rem;">
+                            <strong>Key Features:</strong> Conversation-to-image sync with millisecond precision using performance.now(), intelligent image preloading to prevent UI lag, crossfade transitions between dual image buffers, system prompt engineering for natural conversational tone (max 50 words), and comprehensive error handling with automatic STT restart logic.
+                        </p>
+                        <div class="project-tech">
+                            <span>Node.js</span>
+                            <span>WebRTC (LiveKit)</span>
+                            <span>AI/LLM Integration</span>
+                            <span>WebSockets</span>
+                            <span>Deepgram TTS</span>
+                            <span>Microservices</span>
+                        </div>
+                        <div class="project-link" style="border-top: none; padding-top: 0.5rem; margin-top: 1rem;">
+                            <a href="https://github.com/omkarlalla-code/kiosk-project" target="_blank" class="btn btn-primary" style="font-size: 0.9rem; padding: 0.5rem 1rem; margin-right: 0.5rem;">View on GitHub</a>
+                            <span style="display: block; margin-top: 0.5rem; font-size: 0.85rem; color: #64748b;"><strong>Status:</strong> Production Ready | <strong>Completed:</strong> December 2024</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
                         <h3>Mac Memory Toolkit</h3>
                         <p>
                             Professional memory management and system optimization toolkit for macOS. Shell utilities for
